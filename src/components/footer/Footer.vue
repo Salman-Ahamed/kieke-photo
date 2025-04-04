@@ -2,6 +2,8 @@
 import Logo2 from "../../assets/Home/logo2.png";
 import RoundArrow from "../../assets/Home/roundArrow.png";
 import { navItems } from "../../data/data.ts";
+
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 </script>
 
 <template>
@@ -10,9 +12,13 @@ import { navItems } from "../../data/data.ts";
       <div class="flex flex-col items-center justify-center">
         <div class="relative flex flex-col items-center space-y-5">
           <img :src="Logo2" alt="" />
-          <div class="absolute top-0 right-0 w-[60px] h-[60px]">
-            <img :src="RoundArrow" alt="" class="w-full h-full" />
-          </div>
+          <button
+            class="absolute top-0 right-0 w-[60px] h-[60px] cursor-pointer active:scale-95 transition-all duration-300 ease-in-out"
+            @click="scrollToTop"
+            title="Scroll to top"
+          >
+            <img :src="RoundArrow" alt="Scroll to top" class="w-full h-full" />
+          </button>
           <p
             class="text-[14px] md:text-[16px] lg:text-[18px] leading-[180%] text-center md:px-20 text-[#FFFFFFE5] font-helvatika"
           >
