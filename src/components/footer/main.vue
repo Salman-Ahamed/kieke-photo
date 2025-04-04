@@ -34,7 +34,7 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
         <div
           class="flex border-b border-gray-500 w-full py-10 gap-5 text-[#FFFFFF] text-[14px] md:text-[16px] leading-[16px] items-center justify-center flex-wrap"
         >
-          <a href="#" v-for="(item, index) in navItems">{{ item.name }}</a>
+          <a href="#" v-for="item in navItems">{{ item.name }}</a>
         </div>
         <!-- ---------------- -->
         <div
