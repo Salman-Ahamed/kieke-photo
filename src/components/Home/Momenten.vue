@@ -108,7 +108,7 @@ onUnmounted(() => {
       </div>
       <!-- right side  -->
       <div
-        class="flex-1 bg-[#F9F5F4] md:px-4 flex flex-col place-items-center mt-10 md:mt-0 md:flex-row md:max-h-[800px]"
+        class="flex-1 bg-[#F9F5F4] md:px-4 flex flex-col place-items-center mt-10 md:mt-0 md:flex-row md:max-h-[800px] overflow-y-hidden"
       >
         <!-- card 1  -->
         <div
@@ -153,40 +153,42 @@ onUnmounted(() => {
           </div>
         </div>
         <!-- card 2  -->
-        <div
-          ref="slider"
-          class="flex md:flex-col transition-transform duration-500 ease-in-out"
-          :class="{
-            'animate-horizontal2': isSmallDevice,
-            'animate-vertical2': !isSmallDevice,
-          }"
-        >
+        <div class="md:max-h-[765px] overflow-y-hidden">
           <div
-            v-for="(item, index) in duplicatedItems2"
-            :key="index"
-            class="card py-2 px-2 max-w-[300px] min-w-[200px] lg:max-w-[390px]"
+            ref="slider"
+            class="flex md:flex-col transition-transform duration-500 ease-in-out"
+            :class="{
+              'animate-horizontal2': isSmallDevice,
+              'animate-vertical2': !isSmallDevice,
+            }"
           >
-            <!-- images  -->
-            <div>
-              <img class="w-full max-h-[250px]" :src="item.image" alt="" />
-            </div>
-            <!-- icons  -->
-            <div class="flex justify-between py-2 items-center">
-              <div class="flex items-center gap-3">
-                <img :src="Love" height="20" width="20" alt="" />
-                <img :src="Comment" height="20" width="20" alt="" />
-                <img :src="Plain" height="20" width="20" alt="" />
-              </div>
+            <div
+              v-for="(item, index) in duplicatedItems2"
+              :key="index"
+              class="card py-2 px-2 max-w-[300px] min-w-[200px] lg:max-w-[390px]"
+            >
+              <!-- images  -->
               <div>
-                <img :src="Share" height="20" width="20" alt="" />
+                <img class="w-full max-h-[250px]" :src="item.image" alt="" />
               </div>
-            </div>
-            <!-- views  -->
-            <div>
-              <p class="text-[10px]">{{ item.views }} views</p>
-              <p class="mt-3 text-[9.32px] md:text-[11.67px] leading-[140%]">
-                {{ item.text }}
-              </p>
+              <!-- icons  -->
+              <div class="flex justify-between py-2 items-center">
+                <div class="flex items-center gap-3">
+                  <img :src="Love" height="20" width="20" alt="" />
+                  <img :src="Comment" height="20" width="20" alt="" />
+                  <img :src="Plain" height="20" width="20" alt="" />
+                </div>
+                <div>
+                  <img :src="Share" height="20" width="20" alt="" />
+                </div>
+              </div>
+              <!-- views  -->
+              <div>
+                <p class="text-[10px]">{{ item.views }} views</p>
+                <p class="mt-3 text-[9.32px] md:text-[11.67px] leading-[140%]">
+                  {{ item.text }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
