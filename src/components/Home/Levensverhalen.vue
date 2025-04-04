@@ -63,8 +63,8 @@ import Uparrow from "../../assets/icons/uparrow.svg";
           </div>
         </div>
         <div class="flex gap-5 mt-3 md:hidden">
-          <img :src="Donwarrow" alt="" />
-          <img :src="Uparrow" alt="" />
+          <button><img :src="Donwarrow" alt="Downarrow" /></button>
+          <button><img :src="Uparrow" alt="" /></button>
         </div>
       </div>
 
