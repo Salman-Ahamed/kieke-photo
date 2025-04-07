@@ -6,7 +6,7 @@ import Navbar from "./components/navbar/main.vue";
 
 <template>
   <Navbar />
-  <main class="bg-[#FFFFFF]">
+  <main class="bg-[#FFFFFF] pt-[70px]">
     <Home />
   </main>
   <Footer />
