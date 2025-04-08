@@ -1,22 +1,20 @@
 <script setup lang="ts">
 import TickCirle from "../../assets/icons/tick-circle.svg";
-import { ref, computed } from "vue";
+// import { ref, computed } from "vue";
 
 // State
-const currentValue = ref(244);
-const maxAmount = 1000;
+// const currentValue = ref(244);
+// const maxAmount = 1000;
 
 // Computed percent of progress
-const percent = computed(() => (currentValue.value / maxAmount) * 100);
+// const percent = computed(() => (currentValue.value / maxAmount) * 100);
 
 // Computed styles
-const progressBarStyle = computed(() => ({
-  width: `${percent.value}%`,
-}));
+// const progressBarStyle = computed(() => ({ width: `${percent.value}%` }));
 
-const priceLabelStyle = computed(() => ({
-  right: `calc(-10% + ${percent.value}%)`,
-}));
+// const priceLabelStyle = computed(() => ({
+//   right: `calc(-10% + ${percent.value}%)`,
+// }));
 </script>
 
 <template>
