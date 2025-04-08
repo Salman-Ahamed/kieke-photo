@@ -99,10 +99,10 @@ import TickCirle from "../../assets/icons/tick-circle.svg";
                 <h1
                   class="uppercase font-newYork text-[34px] md:text-[40px] leading-[120%]"
                 >
-                  $244
+                  122
                 </h1>
                 <p class="capitalize text-[16px] md:text-[20px] font-helvatika">
-                  Total Amount
+                  Photographs
                 </p>
               </div>
             </div>
@@ -111,12 +111,12 @@ import TickCirle from "../../assets/icons/tick-circle.svg";
                 <h1
                   class="uppercase text-[#FFFFFF] font-newYork text-[34px] md:text-[40px] leading-[120%]"
                 >
-                  $244
+                  3H
                 </h1>
                 <p
                   class="capitalize text-[16px] md:text-[20px] font-helvatika text-[#FFFFFF]"
                 >
-                  Total Amount
+                  Take Time
                 </p>
               </div>
             </div>
@@ -125,12 +125,12 @@ import TickCirle from "../../assets/icons/tick-circle.svg";
                 <h1
                   class="uppercase text-[#FFFFFF] font-newYork text-[34px] md:text-[40px] leading-[120%]"
                 >
-                  $244
+                  200-300
                 </h1>
                 <p
                   class="capitalize text-[16px] md:text-[20px] font-helvatika text-[#FFFFFF]"
                 >
-                  Total Amount
+                  File Size (MB)
                 </p>
               </div>
             </div>
