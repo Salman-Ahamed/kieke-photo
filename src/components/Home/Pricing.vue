@@ -60,12 +60,12 @@ const progressPercent = computed(() => {
           <div class="h-[20px] bg-gray-200 rounded-sm relative">
             <!-- Dynamic Progress Bar -->
             <div
-              class="h-[20px] absolute top-0 left-0 bg-[#2D3B3B] max-w-[100%] progress-bar"
+              class="h-[20px] absolute top-0 left-0 bg-[#2D3B3B] max-w-[100%] progress-bar cursor-pointer"
               :style="{ width: progressPercent + '%' }"
             >
               <!-- Dynamic Price Label -->
               <div
-                class="w-[100px] flex items-center justify-center text-[16px] md:text-[23px] leading-[150%] text-center text-[#FFFFFF] font-[500] h-[30px] md:h-[40px] bg-[#2D3B3B] absolute -top-[50%] -right-[10px]"
+                class="w-[100px] flex items-center justify-center text-[16px] md:text-[23px] leading-[150%] text-center text-[#FFFFFF] font-[500] h-[40px] bg-[#2D3B3B] absolute -top-[50%] -right-[10px] cursor-pointer"
               >
                 ${{ amount }}
               </div>
