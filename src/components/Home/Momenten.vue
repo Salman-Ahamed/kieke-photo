@@ -10,6 +10,8 @@ import Share from "../../assets/icons/share.svg";
 import i1 from "../../assets/Home/moment/i1.png";
 import i2 from "../../assets/Home/moment/i2.png";
 import i3 from "../../assets/Home/moment/i3.png";
+import image from "../../assets/Home/moment/Image.svg";
+import image2 from "../../assets/Home/moment/Image1.svg";
 import i4 from "../../assets/Home/moment/i4.png";
 import i5 from "../../assets/Home/moment/i5.png";
 
@@ -113,13 +115,31 @@ onUnmounted(() => {
             <img class="w-[100%]" :src="img1" alt="" @click="imgaeUrl(img1)" />
             <img class="w-[100%]" :src="img2" alt="" @click="imgaeUrl(img2)" />
           </div>
-          <div>
-            <img
-              class="w-[100%] max-h-[700px] xl:min-w-[340px]"
-              :src="img3"
-              @click="imgaeUrl(img3)"
-              alt=""
-            />
+          <div class="space-y-5">
+            <div class="max-h-[250px] overflow-hidden">
+              <img
+                class="w-[100%] max-h-[700px] xl:min-w-[340px]"
+                :src="i2"
+                @click="imgaeUrl(i2)"
+                alt=""
+              />
+            </div>
+            <div class="max-h-[200px] overflow-hidden">
+              <img
+                class="w-[100%] xl:min-w-[340px]"
+                :src="image2"
+                @click="imgaeUrl(image2)"
+                alt=""
+              />
+            </div>
+            <div class="overflow-hidden">
+              <img
+                class="w-[100%] max-h-[700px] xl:min-w-[340px]"
+                :src="image"
+                @click="imgaeUrl(image)"
+                alt=""
+              />
+            </div>
           </div>
         </div>
       </div>
