@@ -5,7 +5,7 @@ import Email from "../../assets/icons/sms.svg";
 </script>
 
 <template>
-  <section class="py-5">
+  <section class="py-5" id="contact">
     <div class="container py-5 px-2 bg-[#F9F5F4]">
       <div class="p-5 flex flex-col md:flex-row gap-10">
         <!-- left side  -->

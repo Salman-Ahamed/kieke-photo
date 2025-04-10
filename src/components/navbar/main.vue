@@ -2,6 +2,12 @@
 import Logo from "../../assets/Home/logo.png";
 import { navItems } from "../../data/data.ts";
 import { ref } from "vue";
+function scrollToSection(sectionId) {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+}
 
 const active = ref(0);
 
@@ -22,8 +28,10 @@ const handleActive = (v: number) => {
         <a
           class="font-[16px] text-nowrap list-unstyled leading-[20.04px] text-[14px] lg:text-[16px] not-first:hidden md:not-first:block font-helvatika cursor-pointer text-black hover:bg-[#F9F5F4] rounded-full px-4 py-2 hover:transition-all hover:duration-300"
           v-for="(item, index) in navItems"
+          @click.prevent="scrollToSection(item.id)"
           :key="index"
           @click="handleActive(index)"
+          :href="item.id"
           :class="
             active === index
               ? 'bg-[#F9F5F4] outline outline-black/50 rounded-full px-4 py-2 transition-all duration-300'

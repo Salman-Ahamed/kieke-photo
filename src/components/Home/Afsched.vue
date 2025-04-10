@@ -9,7 +9,7 @@ import i7 from "../../assets/Home/Afsched/i7.png";
 </script>
 
 <template>
-  <section class="pt-4 md:pt-10 lg:pt-20 pb-5">
+  <section class="pt-4 md:pt-10 lg:pt-20 pb-5" id="afscheid">
     <div class="container px-2">
       <div class="sm:hidden">
         <!-- ----- text ---  -->

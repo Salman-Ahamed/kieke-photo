@@ -3,7 +3,7 @@ import HeroImage from "../../assets/Home/heroImage.png";
 </script>
 
 <template>
-  <section class="">
+  <section class="" id="home">
     <div
       class="container px-2 pt-10 pb-5 flex flex-col md:flex-row space-y-5 md:space-y-0 gap-2"
     >

@@ -5,6 +5,11 @@ import i3 from "../../assets/Home/Levensverhalen/i3.png";
 import Donwarrow from "../../assets/icons/dwonarrow.svg";
 import Uparrow from "../../assets/icons/uparrow.svg";
 import { ref } from "vue";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const articles = ref([
   {
@@ -28,21 +33,10 @@ const articles = ref([
 ]);
 
 const currentIndex = ref(0);
-
-const nextSlide = () => {
-  currentIndex.value = (currentIndex.value + 1) % articles.value.length;
-};
-
-const prevSlide = () => {
-  currentIndex.value =
-    currentIndex.value === 0
-      ? articles.value.length - 1
-      : currentIndex.value - 1;
-};
 </script>
 
 <template>
-  <section class="bg-[#F9F5F466] py-10">
+  <section class="bg-[#F9F5F466] py-10" id="levensverhalen">
     <div class="container px-2 md:flex gap-10">
       <!-- left side  -->
       <div>
@@ -62,25 +56,39 @@ const prevSlide = () => {
           </div>
           <div class="md:flex gap-4">
             <!-- Mobile view -->
-            <div class="flex-1 md:hidden">
-              <img
-                class="w-[100%] max-h-[202px]"
-                :src="articles[currentIndex].image"
-                alt=""
-              />
-              <div class="pt-3 pb-4">
-                <h1
-                  class="text-[#2D3B3BE5] text-[18px] font-[500] md:text-[24px] leading-[140%] capitalize pt-3"
-                >
-                  {{ articles[currentIndex].title }}
-                </h1>
-                <p
-                  class="text-[#2D3B3BE5] text-[14px] md:text-[18px] leading-[150%] capitalize py-2"
-                >
-                  {{ articles[currentIndex].description }}
-                </p>
-              </div>
+            <div class="md:hidden">
+              <swiper
+                :modules="[Autoplay, Pagination]"
+                :slides-per-view="1"
+                :space-between="20"
+                :autoplay="{ delay: 2000, disableOnInteraction: false }"
+                pagination
+                class="mySwiper"
+              >
+                <swiper-slide v-for="(item, index) in articles" :key="index">
+                  <div class="flex-1">
+                    <img
+                      class="w-full max-h-[450px] object-fit-fill"
+                      :src="item.image"
+                      alt=""
+                    />
+                    <div class="pt-3 pb-4">
+                      <h1
+                        class="text-[#2D3B3BE5] text-[18px] font-[500] md:text-[24px] leading-[140%] capitalize pt-3"
+                      >
+                        {{ item.title }}
+                      </h1>
+                      <p
+                        class="text-[#2D3B3BE5] text-[14px] md:text-[18px] leading-[150%] capitalize py-2"
+                      >
+                        {{ item.description }}
+                      </p>
+                    </div>
+                  </div>
+                </swiper-slide>
+              </swiper>
             </div>
+
             <!-- Desktop view -->
             <div class="hidden md:block flex-1">
               <img class="w-[100%]" :src="articles[0].image" alt="" />
@@ -112,12 +120,6 @@ const prevSlide = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div class="flex gap-5 mt-3 md:hidden">
-          <button @click="prevSlide">
-            <img :src="Donwarrow" alt="Previous" />
-          </button>
-          <button @click="nextSlide"><img :src="Uparrow" alt="Next" /></button>
         </div>
       </div>
 

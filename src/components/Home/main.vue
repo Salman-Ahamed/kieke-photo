@@ -11,7 +11,9 @@ import Pricing from "./Pricing.vue";
 <template>
   <div>
     <Hero />
-    <Momment />
+    <section>
+      <Momment />
+    </section>
     <Afsched />
     <Levensverhalen />
     <Contactus />

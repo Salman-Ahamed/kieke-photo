@@ -73,7 +73,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="py-10 md:mt-5">
+  <section class="py-10 md:mt-5" id="bijzondere">
     <div
       class="container h-full px-2 gap-5 md:gap-0 place-items-center md:flex overflow-hidden md:max-h-[850px]"
     >
