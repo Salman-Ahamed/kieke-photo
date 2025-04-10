@@ -46,6 +46,22 @@ const cardItems2 = ref([
   },
 ]);
 
+const showModal = ref(false);
+const imgUrl = ref(null);
+
+function openModal(index) {
+  currentIndex.value = index;
+  showModal.value = true;
+}
+
+function closeModal() {
+  showModal.value = false;
+}
+
+function imgaeUrl(url) {
+  imgUrl.value = url;
+  showModal.value = true;
+}
 // Duplicate cards to create infinite effect
 const duplicatedItems = computed(() => [
   ...cardItems.value,
@@ -94,13 +110,14 @@ onUnmounted(() => {
         </div>
         <div class="flex w-[100%] gap-5 sm:gap-7 md:gap-5 mt-5">
           <div class="flex flex-col gap-5 md:gap-6">
-            <img class="w-[100%]" :src="img1" alt="" />
-            <img class="w-[100%]" :src="img2" alt="" />
+            <img class="w-[100%]" :src="img1" alt="" @click="imgaeUrl(img1)" />
+            <img class="w-[100%]" :src="img2" alt="" @click="imgaeUrl(img2)" />
           </div>
           <div>
             <img
               class="w-[100%] max-h-[700px] xl:min-w-[340px]"
               :src="img3"
+              @click="imgaeUrl(img3)"
               alt=""
             />
           </div>
@@ -191,6 +208,28 @@ onUnmounted(() => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <!-- ------------ modal --------------  -->
+      <div
+        v-if="showModal"
+        class="fixed top-0 bg-black/30 backdrop-blur-[2px] w-full h-full bg-opacity-80 z-50 flex items-center justify-center"
+      >
+        <div class="relative">
+          <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <img
+              :src="imgUrl"
+              class="min-w-[300px] md:min-w-[500px] max-w-[300px] md:max-w-[500px] min-h-[300px] md:min-h-[500px] max-h-[300px] md:max-h-[500px] object-cover rounded"
+            />
+            <button
+              @click="closeModal"
+              class="absolute size-[30px] cursor-pointer rounded-full top-2 right-2 bg-black/50 text-white text-xl"
+            >
+              ✕
+            </button>
+          </div>
+
+          <!-- Close Button -->
         </div>
       </div>
     </div>
