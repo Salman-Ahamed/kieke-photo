@@ -3,7 +3,7 @@ import Logo from "../../assets/Home/logo.png";
 import { navItems } from "../../data/data.ts";
 import { ref } from "vue";
 
-const scrollToSection = (sectionId) => {
+const scrollToSection = (sectionId: string) => {
   const element = document.getElementById(sectionId);
   if (element) {
     const elementPosition = element.getBoundingClientRect().top;
