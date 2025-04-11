@@ -2,14 +2,12 @@
 import i1 from "../../assets/Home/Levensverhalen/i1.png";
 import i2 from "../../assets/Home/Levensverhalen/i2.png";
 import i3 from "../../assets/Home/Levensverhalen/i3.png";
-// Remove unused imports
-// import Donwarrow from "../../assets/icons/dwonarrow.svg";
-// import Uparrow from "../../assets/icons/uparrow.svg";
 import { ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Pagination } from "swiper/modules";
 
-// Import Swiper styles
+// Add type declaration references
+/// <reference types="swiper" />
 import "swiper/css";
 import "swiper/css/pagination";
 
