@@ -49,8 +49,7 @@ const cardItems2 = ref([
 ]);
 
 const showModal = ref(false);
-const imgUrl = ref<string>(""); // Change from null to string type with empty string
-const currentIndex = ref(0); // Add missing ref
+const imgUrl = ref<string>("");
 
 const closeModal = () => (showModal.value = false);
 
