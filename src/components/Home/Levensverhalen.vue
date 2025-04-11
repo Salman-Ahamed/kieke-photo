@@ -30,6 +30,9 @@ const articles = ref([
 const currentIndex = ref(0);
 let autoSlideInterval: number | null = null;
 
+// Add a new ref for transition
+const isTransitioning = ref(false);
+
 const startAutoSlide = () => {
   autoSlideInterval = setInterval(() => {
     nextSlide();
@@ -43,15 +46,25 @@ const stopAutoSlide = () => {
   }
 };
 
+// Modify nextSlide function
 const nextSlide = () => {
-  currentIndex.value = (currentIndex.value + 1) % articles.value.length;
+  isTransitioning.value = true;
+  setTimeout(() => {
+    currentIndex.value = (currentIndex.value + 1) % articles.value.length;
+    isTransitioning.value = false;
+  }, 300); // Match this with CSS transition duration
 };
 
+// Modify prevSlide function
 const prevSlide = () => {
-  currentIndex.value =
-    currentIndex.value === 0
-      ? articles.value.length - 1
-      : currentIndex.value - 1;
+  isTransitioning.value = true;
+  setTimeout(() => {
+    currentIndex.value =
+      currentIndex.value === 0
+        ? articles.value.length - 1
+        : currentIndex.value - 1;
+    isTransitioning.value = false;
+  }, 300); // Match this with CSS transition duration
 };
 
 // Start auto-sliding when component is mounted
@@ -100,22 +113,28 @@ const handleNextClick = () => {
           <div class="md:flex gap-4">
             <!-- Mobile view -->
             <div class="flex-1 md:hidden">
-              <img
-                class="w-[100%] max-h-[202px]"
-                :src="articles[currentIndex].image"
-                alt=""
-              />
-              <div class="pt-3 pb-4">
-                <h1
-                  class="text-[#2D3B3BE5] text-[18px] font-[500] md:text-[24px] leading-[140%] capitalize pt-3"
+              <div class="relative overflow-hidden">
+                <img
+                  class="w-[100%] max-h-[202px] transition-opacity duration-300 ease-in-out"
+                  :class="{ 'opacity-0': isTransitioning }"
+                  :src="articles[currentIndex].image"
+                  alt=""
+                />
+                <div
+                  class="pt-3 pb-4 transition-opacity duration-300 ease-in-out"
+                  :class="{ 'opacity-0': isTransitioning }"
                 >
-                  {{ articles[currentIndex].title }}
-                </h1>
-                <p
-                  class="text-[#2D3B3BE5] text-[14px] md:text-[18px] leading-[150%] capitalize py-2"
-                >
-                  {{ articles[currentIndex].description }}
-                </p>
+                  <h1
+                    class="text-[#2D3B3BE5] text-[18px] font-[500] md:text-[24px] leading-[140%] capitalize pt-3"
+                  >
+                    {{ articles[currentIndex].title }}
+                  </h1>
+                  <p
+                    class="text-[#2D3B3BE5] text-[14px] md:text-[18px] leading-[150%] capitalize py-2"
+                  >
+                    {{ articles[currentIndex].description }}
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -182,3 +201,26 @@ const handleNextClick = () => {
     </div>
   </section>
 </template>
+
+<style scoped>
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s ease-in-out;
+}
+
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+/* Add smooth transition for opacity changes */
+img,
+.pt-3 {
+  will-change: opacity;
+}
+</style>
