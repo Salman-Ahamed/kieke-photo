@@ -2,14 +2,9 @@
 import i1 from "../../assets/Home/Levensverhalen/i1.png";
 import i2 from "../../assets/Home/Levensverhalen/i2.png";
 import i3 from "../../assets/Home/Levensverhalen/i3.png";
-import { ref } from "vue";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Autoplay, Pagination } from "swiper/modules";
-
-// Add type declaration references
-/// <reference types="swiper" />
-import "swiper/css";
-import "swiper/css/pagination";
+import Donwarrow from "../../assets/icons/dwonarrow.svg";
+import Uparrow from "../../assets/icons/uparrow.svg";
+import { ref, onMounted, onUnmounted } from "vue";
 
 const articles = ref([
   {
@@ -31,6 +26,56 @@ const articles = ref([
       "Light is the essence of photography. Learn how to manipulate natural and artificial light to create stunning, high-end visuals that exude sophistication.",
   },
 ]);
+
+const currentIndex = ref(0);
+let autoSlideInterval: number | null = null;
+
+const startAutoSlide = () => {
+  autoSlideInterval = setInterval(() => {
+    nextSlide();
+  }, 3000);
+};
+
+const stopAutoSlide = () => {
+  if (autoSlideInterval) {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = null;
+  }
+};
+
+const nextSlide = () => {
+  currentIndex.value = (currentIndex.value + 1) % articles.value.length;
+};
+
+const prevSlide = () => {
+  currentIndex.value =
+    currentIndex.value === 0
+      ? articles.value.length - 1
+      : currentIndex.value - 1;
+};
+
+// Start auto-sliding when component is mounted
+onMounted(() => {
+  startAutoSlide();
+});
+
+// Clean up interval when component is unmounted
+onUnmounted(() => {
+  stopAutoSlide();
+});
+
+// Modify the button click handlers to restart the timer
+const handlePrevClick = () => {
+  stopAutoSlide();
+  prevSlide();
+  startAutoSlide();
+};
+
+const handleNextClick = () => {
+  stopAutoSlide();
+  nextSlide();
+  startAutoSlide();
+};
 </script>
 
 <template>
@@ -54,37 +99,24 @@ const articles = ref([
           </div>
           <div class="md:flex gap-4">
             <!-- Mobile view -->
-            <div class="md:hidden">
-              <swiper
-                :modules="[Autoplay, Pagination]"
-                :slides-per-view="1"
-                :space-between="20"
-                :autoplay="{ delay: 2000, disableOnInteraction: false }"
-                pagination
-                class="mySwiper"
-              >
-                <swiper-slide v-for="(item, index) in articles" :key="index">
-                  <div class="flex-1">
-                    <img
-                      class="w-full max-h-[450px] object-fit-fill"
-                      :src="item.image"
-                      alt=""
-                    />
-                    <div class="pt-3 pb-4">
-                      <h1
-                        class="text-[#2D3B3BE5] text-[18px] font-[500] md:text-[24px] leading-[140%] capitalize pt-3"
-                      >
-                        {{ item.title }}
-                      </h1>
-                      <p
-                        class="text-[#2D3B3BE5] text-[14px] md:text-[18px] leading-[150%] capitalize py-2"
-                      >
-                        {{ item.description }}
-                      </p>
-                    </div>
-                  </div>
-                </swiper-slide>
-              </swiper>
+            <div class="flex-1 md:hidden">
+              <img
+                class="w-[100%] max-h-[202px]"
+                :src="articles[currentIndex].image"
+                alt=""
+              />
+              <div class="pt-3 pb-4">
+                <h1
+                  class="text-[#2D3B3BE5] text-[18px] font-[500] md:text-[24px] leading-[140%] capitalize pt-3"
+                >
+                  {{ articles[currentIndex].title }}
+                </h1>
+                <p
+                  class="text-[#2D3B3BE5] text-[14px] md:text-[18px] leading-[150%] capitalize py-2"
+                >
+                  {{ articles[currentIndex].description }}
+                </p>
+              </div>
             </div>
 
             <!-- Desktop view -->
@@ -118,6 +150,14 @@ const articles = ref([
               </div>
             </div>
           </div>
+        </div>
+        <div class="flex gap-5 mt-3 md:hidden">
+          <button @click="handlePrevClick">
+            <img :src="Donwarrow" alt="Previous" />
+          </button>
+          <button @click="handleNextClick">
+            <img :src="Uparrow" alt="Next" />
+          </button>
         </div>
       </div>
 
