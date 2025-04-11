@@ -7,6 +7,11 @@ import Uparrow from "../../assets/icons/uparrow.svg";
 import { ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Pagination } from "swiper/modules";
+
+/// <reference types="swiper/css" />
+/// <reference types="swiper/css/pagination" />
+/// <reference types="swiper/css/navigation" />
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -31,8 +36,6 @@ const articles = ref([
       "Light is the essence of photography. Learn how to manipulate natural and artificial light to create stunning, high-end visuals that exude sophistication.",
   },
 ]);
-
-const currentIndex = ref(0);
 </script>
 
 <template>
