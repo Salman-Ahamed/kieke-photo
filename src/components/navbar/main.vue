@@ -2,18 +2,23 @@
 import Logo from "../../assets/Home/logo.png";
 import { navItems } from "../../data/data.ts";
 import { ref } from "vue";
-function scrollToSection(sectionId) {
+
+const scrollToSection = (sectionId) => {
   const element = document.getElementById(sectionId);
   if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - 70;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
   }
-}
+};
 
 const active = ref(0);
 
-const handleActive = (v: number) => {
-  active.value = v;
-};
+const handleActive = (v: number) => (active.value = v);
 </script>
 
 <template>
