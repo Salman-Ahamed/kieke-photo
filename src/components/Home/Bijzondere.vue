@@ -15,7 +15,6 @@ import image2 from "../../assets/Home/moment/Image1.svg";
 import i4 from "../../assets/Home/moment/i4.png";
 import i5 from "../../assets/Home/moment/i5.png";
 
-// ----------------
 import { ref, onMounted, onUnmounted, computed } from "vue";
 
 const cardItems = ref([
@@ -51,19 +50,17 @@ const cardItems2 = ref([
 const showModal = ref(false);
 const imgUrl = ref(null);
 
-function openModal(index) {
+const openModal = (index) => {
   currentIndex.value = index;
   showModal.value = true;
-}
+};
 
-function closeModal() {
-  showModal.value = false;
-}
+const closeModal = () => (showModal.value = false);
 
-function imgaeUrl(url) {
+const imageUrl = (url) => {
   imgUrl.value = url;
   showModal.value = true;
-}
+};
 // Duplicate cards to create infinite effect
 const duplicatedItems = computed(() => [
   ...cardItems.value,
@@ -110,33 +107,43 @@ onUnmounted(() => {
             emotions, and stories.
           </p>
         </div>
-        <div class="flex w-[100%] gap-5 sm:gap-7 md:gap-5 mt-5">
+        <div class="flex w-full gap-5 sm:gap-7 md:gap-5 mt-5">
           <div class="flex flex-col gap-5 md:gap-6">
-            <img class="w-[100%]" :src="img1" alt="" @click="imgaeUrl(img1)" />
-            <img class="w-[100%]" :src="img2" alt="" @click="imgaeUrl(img2)" />
+            <img
+              class="w-full cursor-pointer"
+              :src="img1"
+              alt=""
+              @click="imageUrl(img1)"
+            />
+            <img
+              class="w-full cursor-pointer"
+              :src="img2"
+              alt=""
+              @click="imageUrl(img2)"
+            />
           </div>
           <div class="space-y-5">
             <div class="max-h-[250px] overflow-hidden">
               <img
-                class="w-[100%] max-h-[700px] xl:min-w-[340px]"
+                class="w-full max-h-[700px] cursor-pointer xl:min-w-[340px]"
                 :src="i2"
-                @click="imgaeUrl(i2)"
+                @click="imageUrl(i2)"
                 alt=""
               />
             </div>
             <div class="max-h-[200px] overflow-hidden">
               <img
-                class="w-[100%] xl:min-w-[340px]"
+                class="w-full xl:min-w-[340px] cursor-pointer"
                 :src="image2"
-                @click="imgaeUrl(image2)"
+                @click="imageUrl(image2)"
                 alt=""
               />
             </div>
             <div class="overflow-hidden">
               <img
-                class="w-[100%] max-h-[700px] xl:min-w-[340px]"
+                class="w-full max-h-[700px] xl:min-w-[340px] cursor-pointer"
                 :src="image"
-                @click="imgaeUrl(image)"
+                @click="imageUrl(image)"
                 alt=""
               />
             </div>
@@ -233,7 +240,7 @@ onUnmounted(() => {
       <!-- ------------ modal --------------  -->
       <div
         v-if="showModal"
-        class="fixed top-0 bg-black/30 backdrop-blur-[2px] w-full h-full bg-opacity-80 z-50 flex items-center justify-center"
+        class="fixed top-0 left-0 bg-black/30 backdrop-blur-[2px] w-screen h-screen bg-opacity-80 z-50 flex items-center justify-center"
       >
         <div class="relative">
           <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">

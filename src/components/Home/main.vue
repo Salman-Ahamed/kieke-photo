@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import Hero from "./Hero.vue";
-import Momment from "./Momenten.vue";
+import Bijzondere from "./Bijzondere.vue";
 import Afsched from "./Afsched.vue";
 import Levensverhalen from "./Levensverhalen.vue";
-import Contactus from "./Contactus.vue";
+import ContactUs from "./ContactUs.vue";
 import Amanaindahnya from "./Amanaindahnya.vue";
 import Pricing from "./Pricing.vue";
 </script>
@@ -11,12 +11,10 @@ import Pricing from "./Pricing.vue";
 <template>
   <div>
     <Hero />
-    <section>
-      <Momment />
-    </section>
+    <Bijzondere />
     <Afsched />
     <Levensverhalen />
-    <Contactus />
+    <ContactUs />
     <Amanaindahnya />
     <Pricing />
   </div>
