@@ -9,21 +9,16 @@ import i7 from "../../assets/Home/Afsched/i7.png";
 import { ref } from "vue";
 
 const showModal = ref(false);
-const imgUrl = ref(null);
+const imgUrl = ref<string>("");
 
-function openModal(index) {
-  currentIndex.value = index;
-  showModal.value = true;
-}
-
-function closeModal() {
+const closeModal = () => {
   showModal.value = false;
-}
+};
 
-function imgaeUrl(url) {
+const imageUrl = (url: string) => {
   imgUrl.value = url;
   showModal.value = true;
-}
+};
 </script>
 
 <template>
@@ -50,16 +45,16 @@ function imgaeUrl(url) {
           <div class="space-y-2 max-w-[300px]">
             <div>
               <img
-                @click="imgaeUrl(i1)"
-                class="w-full h-full"
+                @click="imageUrl(i1)"
+                class="w-full h-full cursor-pointer"
                 :src="i1"
                 alt=""
               />
             </div>
             <div>
               <img
-                class="min-h-[240px] w-full"
-                @click="imgaeUrl(i2)"
+                class="min-h-[240px] w-full cursor-pointer"
+                @click="imageUrl(i2)"
                 :src="i2"
                 alt=""
               />
@@ -68,17 +63,17 @@ function imgaeUrl(url) {
           <div class="overflow-hidden space-y-2.5 max-w-[300px]">
             <div>
               <img
-                class="w-full object-fit-cover"
+                class="w-full object-fit-cover cursor-pointer"
                 :src="i7"
-                @click="imgaeUrl(i7)"
+                @click="imageUrl(i7)"
                 alt=""
               />
             </div>
             <div>
               <img
-                class="w-full min-h-[260px]"
+                class="w-full min-h-[260px] cursor-pointer"
                 :src="i4"
-                @click="imgaeUrl(i4)"
+                @click="imageUrl(i4)"
                 alt=""
               />
             </div>
@@ -87,12 +82,12 @@ function imgaeUrl(url) {
       </div>
       <!-- desktop view  -->
       <div
-        class="hidden w-[100%] sm:grid gap-5 grid-cols-[repeat(3,1fr)] grid-rows-[reapeat(3,1fr)]"
+        class="hidden w-full sm:grid gap-5 grid-cols-[repeat(3,1fr)] grid-rows-[reapeat(3,1fr)]"
       >
         <div class="col-satrt-1 col-end-2 row-span-2">
           <img
-            class="w-[100%] min-h-[400px] max-h-auto object-cover"
-            @click="imgaeUrl(i1)"
+            class="w-full min-h-[400px] max-h-auto object-cover cursor-pointer"
+            @click="imageUrl(i1)"
             :src="i1"
             alt=""
           />
@@ -114,35 +109,40 @@ function imgaeUrl(url) {
         </div>
         <div class="col-start-[2] col-end-[3] row-start-[2] row-end-[3]">
           <img
-            @click="imgaeUrl(i2)"
-            class="h-[100%] w-[100%]"
+            @click="imageUrl(i2)"
+            class="h-full w-full cursor-pointer"
             :src="i2"
             alt=""
           />
         </div>
         <div class="col-start-[3] col-end-[4] row-start-[2] row-end-[3]">
           <img
-            @click="imgaeUrl(i5)"
-            class="w-[100%] h-[100%]"
+            @click="imageUrl(i5)"
+            class="w-full h-full cursor-pointer"
             :src="i5"
             alt=""
           />
         </div>
         <div class="row-start-[3] row-end-[4]">
           <img
-            class="h-[100%] w-[100%]"
-            @click="imgaeUrl(i3)"
+            class="h-full w-full cursor-pointer"
+            @click="imageUrl(i3)"
             :src="i3"
             alt=""
           />
         </div>
         <div class="row-start-3 row-end-4">
-          <img class="w-[100%]" @click="imgaeUrl(i4)" :src="i4" alt="" />
+          <img
+            class="w-full cursor-pointer"
+            @click="imageUrl(i4)"
+            :src="i4"
+            alt=""
+          />
         </div>
         <div class="row-start-3 row-end-4]">
           <img
-            class="h-[100%] w-[100%]"
-            @click="imgaeUrl(i6)"
+            class="h-full w-full cursor-pointer"
+            @click="imageUrl(i6)"
             :src="i6"
             alt=""
           />

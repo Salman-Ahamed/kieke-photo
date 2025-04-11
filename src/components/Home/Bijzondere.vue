@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import img1 from "../../assets/Home/moment/img1.png";
 import img2 from "../../assets/Home/moment/img2.png";
-import img3 from "../../assets/Home/moment/img3.png";
+// Remove unused import
+// import img3 from "../../assets/Home/moment/img3.png";
 import Love from "../../assets/icons/love.svg";
 import Comment from "../../assets/icons/comment.svg";
 import Plain from "../../assets/icons/plane.svg";
@@ -48,16 +49,12 @@ const cardItems2 = ref([
 ]);
 
 const showModal = ref(false);
-const imgUrl = ref(null);
-
-const openModal = (index) => {
-  currentIndex.value = index;
-  showModal.value = true;
-};
+const imgUrl = ref<string>(""); // Change from null to string type with empty string
+const currentIndex = ref(0); // Add missing ref
 
 const closeModal = () => (showModal.value = false);
 
-const imageUrl = (url) => {
+const imageUrl = (url: string) => {
   imgUrl.value = url;
   showModal.value = true;
 };
