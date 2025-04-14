@@ -1,8 +1,22 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import Image from "../../assets/Home/AmanaIndahmua/Frame 1707481762.png";
 import Facebook from "../../assets/icons/facebook.svg";
 import Insta from "../../assets/icons/insta.svg";
 import Twitter from "../../assets/icons/Twitter.svg";
+import ImageModal from "./ImageModal.vue";
+
+const showModal = ref(false);
+const imgUrl = ref<string>("");
+
+const closeModal = () => {
+  showModal.value = false;
+};
+
+const imageUrl = (url: string) => {
+  imgUrl.value = url;
+  showModal.value = true;
+};
 </script>
 
 <template>
@@ -11,7 +25,12 @@ import Twitter from "../../assets/icons/Twitter.svg";
       class="container flex flex-col md:flex-row gap-8 md:gap-0 items-center"
     >
       <div class="flex-1">
-        <img class="w-[100%] h-[100%] object-cover" :src="Image" alt="" />
+        <img
+          class="w-full h-full object-cover"
+          :src="Image"
+          alt=""
+          @click="imageUrl(Image)"
+        />
       </div>
       <div class="flex-1 px-10">
         <h1
@@ -36,5 +55,8 @@ import Twitter from "../../assets/icons/Twitter.svg";
         </div>
       </div>
     </div>
+
+    <!-- ------------ modal --------------  -->
+    <ImageModal :show="showModal" :image-url="imgUrl" @close="closeModal" />
   </section>
 </template>
