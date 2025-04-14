@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import Logo from "../../assets/Home/logo.png";
 import { navItems } from "../../data/data.ts";
 
@@ -14,6 +14,34 @@ const scrollToSection = (sectionId: string) => {
 
 const active = ref(0);
 const handleActive = (v: number) => (active.value = v);
+
+// Add scroll spy functionality
+const updateActiveSection = () => {
+  const sections = navItems.map((item) => document.getElementById(item.id));
+  const scrollPosition = window.scrollY + 100; // Add offset for header
+
+  sections.forEach((section, index) => {
+    if (section) {
+      const sectionTop = section.offsetTop;
+      const sectionBottom = sectionTop + section.offsetHeight;
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+        active.value = index;
+      }
+    }
+  });
+};
+
+// Add scroll event listener
+onMounted(() => {
+  window.addEventListener("scroll", updateActiveSection);
+  updateActiveSection(); // Initial check
+});
+
+// Clean up event listener
+onUnmounted(() => {
+  window.removeEventListener("scroll", updateActiveSection);
+});
 </script>
 
 <template>
