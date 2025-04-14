@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import i1 from "../../assets/Home/Afsched/i1.png";
 import i2 from "../../assets/Home/Afsched/i2.png";
 import i3 from "../../assets/Home/Afsched/i3.png";
@@ -6,7 +7,7 @@ import i4 from "../../assets/Home/Afsched/i4.png";
 import i5 from "../../assets/Home/Afsched/i5.png";
 import i6 from "../../assets/Home/Afsched/i6.png";
 import i7 from "../../assets/Home/Afsched/i7.png";
-import { ref } from "vue";
+import ImageModal from "./ImageModal.vue";
 
 const showModal = ref(false);
 const imgUrl = ref<string>("");
@@ -149,27 +150,7 @@ const imageUrl = (url: string) => {
         </div>
       </div>
       <!-- ------------ modal --------------  -->
-      <div
-        v-if="showModal"
-        class="fixed top-0 bg-black/30 backdrop-blur-[2px] w-full h-full bg-opacity-80 z-50 flex items-center justify-center"
-      >
-        <div class="relative">
-          <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <img
-              :src="imgUrl"
-              class="min-w-[300px] md:min-w-[500px] max-w-[300px] md:max-w-[500px] min-h-[300px] md:min-h-[500px] max-h-[300px] md:max-h-[500px] object-cover rounded"
-            />
-            <button
-              @click="closeModal"
-              class="absolute size-[30px] cursor-pointer rounded-full top-2 right-2 bg-black/50 text-white text-xl"
-            >
-              ✕
-            </button>
-          </div>
-
-          <!-- Close Button -->
-        </div>
-      </div>
+      <ImageModal :show="showModal" :image-url="imgUrl" @close="closeModal" />
     </div>
   </section>
 </template>

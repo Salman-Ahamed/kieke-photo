@@ -1,15 +1,16 @@
 <script setup lang="ts">
+import { Autoplay, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { ref } from "vue";
 import i1 from "../../assets/Home/Levensverhalen/i1.png";
 import i2 from "../../assets/Home/Levensverhalen/i2.png";
 import i3 from "../../assets/Home/Levensverhalen/i3.png";
-import { ref } from "vue";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Autoplay, Pagination } from "swiper/modules";
 
 // Add type declaration references
 /// <reference types="swiper" />
 import "swiper/css";
 import "swiper/css/pagination";
+import ImageModal from "./ImageModal.vue";
 
 const articles = ref([
   {
@@ -31,6 +32,18 @@ const articles = ref([
       "Light is the essence of photography. Learn how to manipulate natural and artificial light to create stunning, high-end visuals that exude sophistication.",
   },
 ]);
+
+const showModal = ref(false);
+const imgUrl = ref<string>("");
+
+const closeModal = () => {
+  showModal.value = false;
+};
+
+const imageUrl = (url: string) => {
+  imgUrl.value = url;
+  showModal.value = true;
+};
 </script>
 
 <template>
@@ -66,8 +79,9 @@ const articles = ref([
                 <swiper-slide v-for="(item, index) in articles" :key="index">
                   <div class="flex-1">
                     <img
-                      class="w-full max-h-[450px] object-fit-fill"
+                      class="w-full max-h-[450px] object-fit-fill cursor-pointer"
                       :src="item.image"
+                      @click="imageUrl(item.image)"
                       alt=""
                     />
                     <div class="pt-3 pb-4">
@@ -89,7 +103,12 @@ const articles = ref([
 
             <!-- Desktop view -->
             <div class="hidden md:block flex-1">
-              <img class="w-[100%]" :src="articles[0].image" alt="" />
+              <img
+                class="w-full cursor-pointer"
+                @click="imageUrl(articles[0].image)"
+                :src="articles[0].image"
+                alt=""
+              />
               <div class="pt-3 pb-4">
                 <h1
                   class="text-[#2D3B3BE5] text-[18px] font-[500] md:text-[24px] leading-[140%] capitalize pt-3"
@@ -103,9 +122,10 @@ const articles = ref([
                 </p>
               </div>
             </div>
-            <div class="hidden flex-1 w-[100%] md:flex flex-col-reverse">
+            <div class="hidden flex-1 w-full md:flex flex-col-reverse">
               <img
-                class="max-h-[350px] bg-cover object-fit-content"
+                @click="imageUrl(articles[1].image)"
+                class="max-h-[350px] bg-cover object-fit-content cursor-pointer"
                 :src="articles[1].image"
                 alt=""
               />
@@ -124,7 +144,12 @@ const articles = ref([
       <!-- right side  -->
       <div class="hidden lg:block">
         <div class="hidden md:flex flex-col">
-          <img :src="articles[2].image" alt="" />
+          <img
+            :src="articles[2].image"
+            @click="imageUrl(articles[2].image)"
+            class="cursor-pointer"
+            alt=""
+          />
           <div>
             <h1
               class="text-[#2D3B3BE5] font-[500] text-[18px] md:text-[24px] leading-[140%] capitalize pt-3"
@@ -140,5 +165,8 @@ const articles = ref([
         </div>
       </div>
     </div>
+
+    <!-- ------------ modal --------------  -->
+    <ImageModal :show="showModal" :image-url="imgUrl" @close="closeModal" />
   </section>
 </template>

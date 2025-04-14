@@ -3,20 +3,21 @@ import img1 from "../../assets/Home/moment/img1.png";
 import img2 from "../../assets/Home/moment/img2.png";
 // Remove unused import
 // import img3 from "../../assets/Home/moment/img3.png";
-import Love from "../../assets/icons/love.svg";
 import Comment from "../../assets/icons/comment.svg";
+import Love from "../../assets/icons/love.svg";
 import Plain from "../../assets/icons/plane.svg";
 import Share from "../../assets/icons/share.svg";
 // images for slider
 import i1 from "../../assets/Home/moment/i1.png";
 import i2 from "../../assets/Home/moment/i2.png";
 import i3 from "../../assets/Home/moment/i3.png";
-import image from "../../assets/Home/moment/Image.svg";
-import image2 from "../../assets/Home/moment/Image1.svg";
 import i4 from "../../assets/Home/moment/i4.png";
 import i5 from "../../assets/Home/moment/i5.png";
+import image from "../../assets/Home/moment/Image.svg";
+import image2 from "../../assets/Home/moment/Image1.svg";
 
-import { ref, onMounted, onUnmounted, computed } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
+import ImageModal from "./ImageModal.vue";
 
 const cardItems = ref([
   {
@@ -234,27 +235,7 @@ onUnmounted(() => {
         </div>
       </div>
       <!-- ------------ modal --------------  -->
-      <div
-        v-if="showModal"
-        class="fixed top-0 left-0 bg-black/30 backdrop-blur-[2px] w-screen h-screen bg-opacity-80 z-50 flex items-center justify-center"
-      >
-        <div class="relative">
-          <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <img
-              :src="imgUrl"
-              class="min-w-[300px] md:min-w-[500px] max-w-[300px] md:max-w-[500px] min-h-[300px] md:min-h-[500px] max-h-[300px] md:max-h-[500px] object-cover rounded"
-            />
-            <button
-              @click="closeModal"
-              class="absolute size-[30px] cursor-pointer rounded-full top-2 right-2 bg-black/50 text-white text-xl"
-            >
-              ✕
-            </button>
-          </div>
-
-          <!-- Close Button -->
-        </div>
-      </div>
+      <ImageModal :show="showModal" :image-url="imgUrl" @close="closeModal" />
     </div>
   </section>
 </template>
