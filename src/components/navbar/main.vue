@@ -1,23 +1,18 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import Logo from "../../assets/Home/logo.png";
 import { navItems } from "../../data/data.ts";
-import { ref } from "vue";
 
 const scrollToSection = (sectionId: string) => {
   const element = document.getElementById(sectionId);
   if (element) {
     const elementPosition = element.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - 70;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
   }
 };
 
 const active = ref(0);
-
 const handleActive = (v: number) => (active.value = v);
 </script>
 
