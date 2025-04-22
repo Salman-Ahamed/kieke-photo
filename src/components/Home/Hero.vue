@@ -9,9 +9,10 @@ import HeroImage from "../../assets/Home/heroImage.png";
   >
     <div class="flex-1 flex flex-col items-start justify-center">
       <h1
-        class="text-[48px] md:text-[68px] lg:text-[78px] font-newYork leading-[120%]"
+        class="text-[48px] md:text-[68px] lg:text-[78px] font-newYork leading-[120%] text-[#2D3B3B]"
       >
-        CAPTURING MOMENTS IN <br class="hidden md:block" />
+        CAPTURING <span class="text-[#2D3B3BB2]">MOMENTS</span> IN
+        <br class="hidden md:block" />
         TIME
       </h1>
       <p class="text-[#2D3B3BE5] py-4">

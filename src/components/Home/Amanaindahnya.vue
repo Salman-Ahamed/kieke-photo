@@ -36,7 +36,7 @@ const imageUrl = (url: string) => {
         <h1
           class="text-[33px] sm:text-[40px] text-[#2D3B3B] md:text-[48px] lg:text-[54px] leading-[120%] uppercase font-newYork pb-3 lg:pb-10"
         >
-          AMANA INDAHNYA
+          AMANA <span class="text-[#2D3B3BB2]">INDAHNYA</span>
         </h1>
         <p
           class="text-[16px] md:text-[18px] lg:text-[22px] text-[#2D3B3BE5] leading-[180%] lg:leading-[200%]"

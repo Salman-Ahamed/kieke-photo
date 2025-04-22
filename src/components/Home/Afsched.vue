@@ -31,7 +31,7 @@ const imageUrl = (url: string) => {
           <h1
             class="text-[40px] uppercase md:text-[54px] leading-[120%] font-newYork"
           >
-            Afscheid
+            Afsc<span class="text-[#2D3B3BB2]">heid</span>
           </h1>
           <p
             class="font-helvatika capitalize text-[#2D3B3BE5] pb-8 pt-3 text-[14px] md:text-[20px] leading-[150%]"
@@ -97,7 +97,7 @@ const imageUrl = (url: string) => {
           <h1
             class="text-[40px] uppercase md:text-[54px] leading-[120%] font-newYork"
           >
-            Afscheid
+            Afsc<span class="text-[#2D3B3BB2]">heid</span>
           </h1>
           <p
             class="font-helvatika capitalize text-[#2D3B3BE5] pb-8 pt-3 text-[14px] md:text-[20px] leading-[150%]"
